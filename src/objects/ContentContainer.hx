@@ -38,7 +38,7 @@ class ContentContainer extends Container
 	}
 
 	public function load_card(title:String) {
-		padding = App.theme.padding * 2;
+		padding = App.theme.padding * 3;
 		trace('Loading card: ${title}');
 		if (loaded) return unload_card(title);
 		y = 0;
@@ -58,7 +58,7 @@ class ContentContainer extends Container
 			}
 			if (item.type == 'image' && item.display == 'full-width' && last_y == App.theme.padding) {
 				last_y = 0;
-				padding = App.theme.padding;
+				padding = App.theme.padding * 2;
 			}
 			content_item.position.y = last_y;
 			last_y += content_item.height + App.theme.margin;

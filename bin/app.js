@@ -224,7 +224,7 @@ objects_ContentContainer.prototype = $extend(PIXI.Container.prototype,{
 		this.last_y = e.clientY;
 	}
 	,load_card: function(title) {
-		this.padding = App.theme.padding * 2;
+		this.padding = App.theme.padding * 3;
 		console.log("src/objects/ContentContainer.hx:42:","Loading card: " + title);
 		if(this.loaded) {
 			this.unload_card(title);
@@ -264,7 +264,7 @@ objects_ContentContainer.prototype = $extend(PIXI.Container.prototype,{
 			}
 			if(item.type == "image" && item.display == "full-width" && last_y == App.theme.padding) {
 				last_y = 0;
-				this.padding = App.theme.padding;
+				this.padding = App.theme.padding * 2;
 			}
 			content_item.position.y = last_y;
 			last_y += content_item.height + App.theme.margin;
