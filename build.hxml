@@ -1,0 +1,7 @@
+-lib pixijs
+-lib zerolib
+-lib gsap
+-cp src/
+-main App
+-dce full
+-js bin/app.js

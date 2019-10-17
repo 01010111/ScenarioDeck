@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Scenario Deck</title>
+	<style>
+		* {
+			padding:0;
+			margin:0;
+			overflow: hidden;
+			image-rendering: -webkit-optimize-contrast;
+		}
+		@font-face {
+			font-family: "Apercu";
+			src: url('include/ApercuPro-Regular.otf')
+		}
+	</style>
+</head>
+	<script src="include/pixi.js"></script>
+	<script src="include/font.js"></script>
+	<script src="include/TweenMax.min.js"></script>
+	<script src="include/EasePack.min.js"></script>
+	<script src="app.js"></script>
+<body>
+	<script type="text/javascript">
+		var cards = [
+		{
+				title: 'Title',
+				content: [
+					{
+						type: 'image',
+						src: 'assets/image.png',
+						display: 'full-width',
+					},
+					{
+						type: 'paragraph',
+						text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit eget gravida cum sociis natoque penatibus et magnis. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Non tellus orci ac auctor augue. Amet cursus sit amet dictum sit amet. Id porta nibh venenatis cras sed felis eget velit aliquet. Est lorem ipsum dolor sit amet consectetur adipiscing. Nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Id velit ut tortor pretium viverra suspendisse potenti nullam. Risus viverra adipiscing at in tellus. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi tristique. Sem nulla pharetra diam sit amet. Libero volutpat sed cras ornare arcu. Varius morbi enim nunc faucibus a pellentesque sit amet. Risus ultricies tristique nulla aliquet enim.',
+					},
+					{
+						type: 'button',
+						text: 'Continue',
+						url: 'Card One',
+					},
+				]
+			},
+			{
+				title: 'Card One',
+				content: [
+					{
+						type: 'paragraph',
+						text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit eget gravida cum sociis natoque penatibus et magnis. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Non tellus orci ac auctor augue. Amet cursus sit amet dictum sit amet. Id porta nibh venenatis cras sed felis eget velit aliquet. Est lorem ipsum dolor sit amet consectetur adipiscing. Nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Id velit ut tortor pretium viverra suspendisse potenti nullam. Risus viverra adipiscing at in tellus. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi tristique. Sem nulla pharetra diam sit amet. Libero volutpat sed cras ornare arcu. Varius morbi enim nunc faucibus a pellentesque sit amet. Risus ultricies tristique nulla aliquet enim.',
+					},
+					{
+						type: 'article',
+						src: 'assets/image.png',
+						url: 'Title',
+						text: 'This is some test text. Sometimes articles have long names.'
+					},
+					{
+						type: 'paragraph',
+						text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit eget gravida cum sociis natoque penatibus et magnis. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Non tellus orci ac auctor augue. Amet cursus sit amet dictum sit amet. Id porta nibh venenatis cras sed felis eget velit aliquet. Est lorem ipsum dolor sit amet consectetur adipiscing. Nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Id velit ut tortor pretium viverra suspendisse potenti nullam. Risus viverra adipiscing at in tellus. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi tristique. Sem nulla pharetra diam sit amet. Libero volutpat sed cras ornare arcu. Varius morbi enim nunc faucibus a pellentesque sit amet. Risus ultricies tristique nulla aliquet enim.',
+					},
+					{
+						type: 'textbox',
+						text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+					},
+					{
+						type: 'paragraph',
+						text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit eget gravida cum sociis natoque penatibus et magnis. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Non tellus orci ac auctor augue. Amet cursus sit amet dictum sit amet. Id porta nibh venenatis cras sed felis eget velit aliquet. Est lorem ipsum dolor sit amet consectetur adipiscing. Nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Id velit ut tortor pretium viverra suspendisse potenti nullam. Risus viverra adipiscing at in tellus. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi tristique. Sem nulla pharetra diam sit amet. Libero volutpat sed cras ornare arcu. Varius morbi enim nunc faucibus a pellentesque sit amet. Risus ultricies tristique nulla aliquet enim.',
+					},
+					{
+						type: 'button',
+						text: 'Return',
+						url: 'Title',
+					},
+					{
+						type: 'points',
+						amt: 10
+					}
+				]
+			},
+		]
+		App.init(cards, 'simple');
+	</script>
+</body>
+</html>
