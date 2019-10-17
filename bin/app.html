@@ -46,7 +46,7 @@
 					{
 						type: 'button',
 						text: 'Secret',
-						url: 'Card One',
+						url: 'Secret Card',
 						flag: 'secret'
 					},
 				]
@@ -82,16 +82,34 @@
 						url: 'Title',
 					},
 					{
-						type: 'points',
-						amt: 10
+						type: 'flag',
+						text: 'secret',
+					}
+				]
+			},
+			{
+				title: "Secret Card",
+				content: [
+					{
+						type: 'paragraph',
+						text: 'You found the secret! Good job!',
+					},
+					{
+						type: 'button',
+						text: 'Go Back',
+						url: 'Title',
 					},
 					{
 						type: 'flag',
 						text: 'secret',
-						value: true,
-					}
+						value: false,
+					},
+					{
+						type: 'points',
+						amt: 10
+					},
 				]
-			},
+			}
 		]
 		App.init(cards, 'simple');
 	</script>

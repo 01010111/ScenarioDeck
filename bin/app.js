@@ -467,16 +467,16 @@ themes_Simple.prototype = {
 	,load_points: function(amt) {
 		var alert = new PIXI.Graphics();
 		alert.beginFill(3194880);
-		alert.drawRoundedRect(-100,-16,200,32,16);
+		alert.drawRoundedRect(-128,-32,256,64,16);
 		alert.endFill();
 		var text = new PIXI.Text("You earned " + amt + " points!",themes_Styles.text_button);
 		text.anchor.set(0.5);
 		alert.addChild(text);
-		alert.position.set(App.i.renderer.width / 2,-32);
+		alert.position.set(App.i.renderer.width / 2,App.i.renderer.height + 40);
 		App.i.stage.addChild(alert);
-		TweenMax.to(alert,1,{ y : 32});
+		TweenMax.to(alert,1,{ y : App.i.renderer.height - 64});
 		zero_utilities_Timer.get(5,function() {
-			return TweenMax.to(alert,1,{ y : -32, onComplete : function() {
+			return TweenMax.to(alert,1,{ y : App.i.renderer.height + 40, onComplete : function() {
 				alert.destroy();
 				return;
 			}});

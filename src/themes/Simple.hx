@@ -123,16 +123,16 @@ class Simple implements Theme
 	public function load_points(amt:Int):Container {
 		var alert = new Graphics();
 		alert.beginFill(0x30C000);
-		alert.drawRoundedRect(-100, -16, 200, 32, 16);
+		alert.drawRoundedRect(-128, -32, 256, 64, 16);
 		alert.endFill();
 		var text = new Text('You earned $amt points!', Styles.text_button);
 		text.anchor.set(0.5);
 		alert.addChild(text);
-		alert.position.set(App.i.renderer.width/2, - 32);
+		alert.position.set(App.i.renderer.width/2, App.i.renderer.height + 40);
 
 		App.i.stage.addChild(alert);
-		alert.to(1, { y: 32 });
-		Timer.get(5, () -> alert.to(1, { y: -32, onComplete: () -> alert.destroy() }));
+		alert.to(1, { y: App.i.renderer.height - 64 });
+		Timer.get(5, () -> alert.to(1, { y: App.i.renderer.height + 40, onComplete: () -> alert.destroy() }));
 
 		return new Container();
 	}
