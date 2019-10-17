@@ -27,4 +27,6 @@ typedef Content = {
 	?display:String,
 	?url:String,
 	?amt:Int,
+	?flag:String,
+	?value:Bool,
 }

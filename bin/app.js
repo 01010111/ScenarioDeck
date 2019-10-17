@@ -225,7 +225,7 @@ objects_ContentContainer.prototype = $extend(PIXI.Container.prototype,{
 	}
 	,load_card: function(title) {
 		this.padding = App.theme.padding * 3;
-		console.log("src/objects/ContentContainer.hx:42:","Loading card: " + title);
+		console.log("src/objects/ContentContainer.hx:43:","Loading card: " + title);
 		if(this.loaded) {
 			this.unload_card(title);
 			return;
@@ -238,6 +238,11 @@ objects_ContentContainer.prototype = $extend(PIXI.Container.prototype,{
 		while(_g < _g1.length) {
 			var item = _g1[_g];
 			++_g;
+			if(item.flag != null) {
+				if(!util_FlagManager.get(item.flag)) {
+					continue;
+				}
+			}
 			var content_item;
 			switch(item.type.toLowerCase()) {
 			case "article":
@@ -245,6 +250,10 @@ objects_ContentContainer.prototype = $extend(PIXI.Container.prototype,{
 				break;
 			case "button":
 				content_item = App.theme.load_button(item.text,item.url);
+				break;
+			case "flag":
+				util_FlagManager.set(item.text,item.value != null ? item.value : true);
+				content_item = new PIXI.Container();
 				break;
 			case "image":
 				content_item = App.theme.load_image(item.src,item.display);
@@ -275,7 +284,7 @@ objects_ContentContainer.prototype = $extend(PIXI.Container.prototype,{
 	}
 	,unload_card: function(next) {
 		var _gthis = this;
-		console.log("src/objects/ContentContainer.hx:72:","unloading " + this.content_array.length + " objects");
+		console.log("src/objects/ContentContainer.hx:77:","unloading " + this.content_array.length + " objects");
 		zero_utilities_Timer.get(App.theme.unload(this.content_array),function() {
 			while(_gthis.content_array.length > 0) {
 				var tmp = _gthis.content_array.shift();
@@ -512,6 +521,28 @@ util_CardManager.exists = function(title) {
 	}
 	return false;
 };
+var util_FlagManager = function() { };
+util_FlagManager.set = function(flag,value) {
+	var _this = util_FlagManager.map;
+	if(__map_reserved[flag] != null) {
+		_this.setReserved(flag,value);
+	} else {
+		_this.h[flag] = value;
+	}
+};
+util_FlagManager.get = function(flag) {
+	var _this = util_FlagManager.map;
+	if(__map_reserved[flag] != null ? _this.existsReserved(flag) : _this.h.hasOwnProperty(flag)) {
+		var _this1 = util_FlagManager.map;
+		if(__map_reserved[flag] != null) {
+			return _this1.getReserved(flag);
+		} else {
+			return _this1.h[flag];
+		}
+	} else {
+		return false;
+	}
+};
 var util_LinkManager = function() { };
 util_LinkManager.go_to_link = function(url) {
 	if(Math.abs(App.i.content_container.total_move) > util_LinkManager.move_threshold) {
@@ -627,6 +658,7 @@ var __map_reserved = {};
 themes_Styles.text_main = new PIXI.TextStyle({ fill : 2105376, wordWrap : true, fontSize : 18});
 themes_Styles.text_button = new PIXI.TextStyle({ fill : 16777215, wordWrap : true, fontSize : 16});
 themes_Styles.text_textbox = new PIXI.TextStyle({ fill : 16777215, wordWrap : true, fontSize : 20});
+util_FlagManager.map = new haxe_ds_StringMap();
 util_LinkManager.move_threshold = 8;
 util_PointsManager.earned = new haxe_ds_StringMap();
 util_ResizeUtil.resize_map = new haxe_ds_ObjectMap();

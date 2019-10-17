@@ -1,5 +1,6 @@
 package objects;
 
+import util.FlagManager;
 import js.html.TouchEvent;
 import js.Browser;
 import zero.utilities.Timer;
@@ -45,12 +46,16 @@ class ContentContainer extends Container
 		var card = CardManager.get_card(title);
 		var last_y = App.theme.padding;
 		for (item in card.content) {
+			if (item.flag != null) if (!FlagManager.get(item.flag)) continue;
 			var content_item:Container = switch (item.type.toLowerCase()) {
 				case 'image': App.theme.load_image(item.src, item.display);
 				case 'paragraph': App.theme.load_paragraph(item.text);
 				case 'textbox': App.theme.load_textbox(item.text);
 				case 'button': App.theme.load_button(item.text, item.url);
 				case 'article': App.theme.load_article(item.text, item.src, item.url);
+				case 'flag': 
+					util.FlagManager.set(item.text, (item.value != null ? item.value : true));
+					new Container();
 				case 'points': 
 					util.PointsManager.receive_pts(title, item.amt);
 					new Container();
