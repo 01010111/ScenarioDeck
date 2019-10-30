@@ -1,13 +1,13 @@
 package;
 
 import zero.utilities.Timer;
-import themes.Simple;
 import js.Browser;
 import pixi.loaders.Loader;
 import util.CardManager.Card;
 import pixi.core.Application;
 import objects.ContentContainer;
 import util.Theme;
+import objects.EndScreen.ContentData;
 using zero.extensions.ArrayExt;
 
 @:expose
@@ -16,24 +16,42 @@ class App extends Application {
 	public static var deck:Array<Card>;
 	public static var i:App;
 	public static var theme:Theme;
+	public static var config:Config;
 
-	static function main() trace('Scenario Deck loading...');
-	static function init(deck:Array<Card>, theme:String = 'simple') {
-		App.deck = deck;
-		App.theme = get_theme(theme);
-		var images = [ for (card in deck) for (item in card.content) if (item.type.toLowerCase() == 'image' || item.type.toLowerCase() == 'article') item.src ];
-		images.remove_duplicates();
-		var loader = new Loader();
-		loader.add(images);
-		loader.on('progress', () -> trace(loader.progress));
-		loader.on('complete', () -> i = new App());
-		loader.load();
+	static function main() {}
+	
+	static function init(config:Config) {
+		App.deck = config.deck;
+		App.theme = get_theme(config.theme);
+		App.config = config;
+
+		var load_images = () -> {
+			var images = [ for (card in deck) for (item in card.content) if (item.type.toLowerCase() == 'image' || item.type.toLowerCase() == 'article') item.src ];
+			if (config.bg_src != null) images.push(config.bg_src);
+			trace(images);
+			images.remove_duplicates();
+			trace(images);
+			var loader = new Loader();
+			loader.add(images);
+			//loader.on('progress', () -> trace(loader.progress));
+			loader.on('complete', () -> i = new App());
+			loader.load();
+		}
+
+		App.theme.fonts.length == 0 ? load_images() : webfont.WebFontLoader.load({
+			custom: {
+				families: App.theme.fonts.merge(['Avenir Next Demi', 'Avenir Next Bold']).remove_duplicates(), // Theme fonts + Endscreen fonts
+				urls: ['include/fonts.css']
+			},
+			active: load_images
+		});
 	}
 
 	static function get_theme(theme:String):Theme {
 		return switch theme {
-			case 'simple': new Simple();
-			default: new Simple();
+			case 'simple': new themes.Simple();
+			case 'legacy': new themes.Legacy();
+			default: new themes.Simple();
 		}
 	}
 
@@ -61,7 +79,7 @@ class App extends Application {
 		Browser.window.requestAnimationFrame(update);
 		content_container = new ContentContainer();
 		stage.addChild(content_container);
-		content_container.load_card('Title');
+		App.theme.load_title();
 	}
 
 	var last = 0.0;
@@ -76,4 +94,16 @@ class App extends Application {
 		return out;
 	}
 
+}
+
+typedef Config = {
+	deck:Array<Card>,
+	theme:String,
+	title:String,
+	description:String,
+	button_text:String,
+	first_card:String,
+	?subtitle:String,
+	?bg_src:String,
+	?content_links:Array<ContentData>
 }

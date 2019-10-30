@@ -29,4 +29,5 @@ typedef Content = {
 	?amt:Int,
 	?flag:String,
 	?value:Bool,
+	?end:Bool,
 }

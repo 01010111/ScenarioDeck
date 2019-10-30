@@ -1,0 +1,146 @@
+{
+	"deck": [
+		{
+			"title": "brief",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "Transport Inc. has just assembled a project team to perform an IT audit of the company’s network security. Tomas, from Ar-TECH Corp, has been brought on as a consultant and is working with a team made up of Jackie, the project manager, and several other members of the IT department."
+				},
+				{
+					"type": "button",
+					"text": "Continue",
+					"url": "situation"
+				}
+			]
+		},
+		{
+			"title": "situation",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "Jackie, who has recently been through training in avoiding ableist language, words or phrases that devalue people who have physical or mental disabilities, notices that Tomas frequently uses phrases such as “That timeline is absolutely insane,” or “We will not let this budget cripple us.”\n\nJackie realizes that Tomas has been brought in as a consultant and she doesn’t want to stir the pot and cause their project to fail because of interpersonal conflict. Yet, as time wears on, she’s finding it more and more difficult to work with him. She’s worried this type of language will trickle down to her team. In fact, she has noticed that Sam, one of her newer team members, seems to idolize Tomas because of his status."
+				},
+				{
+					"type": "image",
+					"display": "full-width",
+					"src": "assets/business.png",
+					"flag": "show-image"
+				},
+				{
+					"type": "button",
+					"text": "Continue",
+					"url": "question"
+				}
+			]
+		},
+		{
+			"title": "question",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "Based on the information presented in the article set, what is Jackie’s best course of action to ensure the project team members do not use ableist language?"
+				},
+				{
+					"type": "button",
+					"text": "Jackie could kindly and respectfully offer a replacement whenever Tomas uses ableist language: “No, not ‘insane,’ Tomas. We could say ‘the timeline is very short,’ instead.”",
+					"url": "response 1"
+				},
+				{
+					"type": "button",
+					"text": "Jackie could use the opportunity to teach the team about implicit biases outside of Tomas’ earshot, instructing her team that Tomas likely didn’t mean to say it, but has an intrinsic bias, and they’ll choose to ignore it moving forward.",
+					"url": "response 2"
+				},
+				{
+					"type": "button",
+					"text": "Jackie could ask Tomas privately if he wouldn’t mind having a dialogue about the language usage with her team. Then together, they could have a conversation about implicit biases and the harm they can cause.",
+					"url": "response 3"
+				}
+			]
+		},
+		{
+			"title": "response 1",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "Correcting Tomas in front of the team (even kindly) could cause Tomas to react defensively."
+				},
+				{
+					"type": "button",
+					"text": "Try Again",
+					"url": "brief"
+				},
+				{
+					"type": "flag",
+					"flag": "show-image",
+					"value": true 
+				}
+			]
+		},
+		{
+			"title": "response 2",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "Although this respectfully addresses Tomas’ influence on Jackie’s team, it doesn’t address Tomas’ usage of the ableist language which is causing some inner conflict for Jackie and may inhibit the project’s success down the line and inadvertently hurt other people."
+				},
+				{
+					"type": "button",
+					"text": "Try Again",
+					"url": "brief"
+				}
+			]
+		},
+		{
+			"title": "response 3",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "This respectfully addresses Jackie’s need to stop the ableist language and also instructs her team in proper language usage."
+				},
+				{
+					"type": "textbox",
+					"text": "Avoiding personal conflicts at the expense of a larger inclusive issue is rarely the recommended course of action as it may breed ill will and harm individuals. Although implicit biases may be uncomfortable to address at first, with the right respect and consideration, it can be accomplished."
+				},
+				{
+					"type": "points",
+					"amt": 5
+				},
+				{
+					"type": "button",
+					"text": "Continue",
+					"end": true
+				}
+			]
+		}
+	],
+	"theme": "legacy",
+	"title": "Dismantling Implicit Biases",
+	"subtitle": "scenario",
+	"description": "Carefully read through the brief and simulation, then give the best answer to the prompt.",
+	"button_text": "Begin",
+	"bg_src": "assets/business.png",
+	"first_card": "brief",
+	"content_links": [
+	{
+			"image": "assets/business.png",
+			"title": "Test Link Number One",
+			"url": "http://google.com"
+		},
+		{
+			"image": "assets/business.png",
+			"title": "Test Link Number Two",
+			"url": "http://google.com"
+		},
+		{
+			"image": "assets/business.png",
+			"title": "Test Link Number Three",
+			"url": "http://google.com"
+		},
+		{
+			"image": "assets/business.png",
+			"title": "Test Link Number Four",
+			"url": "http://google.com"
+		}
+	]
+}

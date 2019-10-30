@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Scenario Deck</title>
+	<style>
+		* {
+			padding:0;
+			margin:0;
+			image-rendering: -webkit-optimize-contrast;
+			box-sizing: border-box;
+		}
+		.container {
+			height: 100vh;
+			width: 100vw;
+			margin: auto;
+		}
+		.panel {
+			padding: 16px;
+			max-width: 480px;
+			margin: auto;
+		}
+		.panel * {
+			font-family: Arial, Helvetica, sans-serif;
+			margin: 8px 0;
+			width: 100%;
+		}
+		button {
+			background-color: lightgray;
+			border: 1px solid black;
+			padding: 15px 32px;
+		}
+		iframe {
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+		input, textarea, select {
+			-webkit-appearance: none; -moz-appearance: none;
+			display: block;
+			font-size: 14px;
+			padding: 8px;
+			border: 1px solid #bbb;
+		}
+		hr {
+			margin: 16px !important;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		function add_game(src) {
+			document.getElementById('admin panel').style.display = 'none';
+
+			let div = document.createElement('div');
+			div.className = 'container';
+
+			let frame = document.createElement('iframe');
+			frame.id = 'deck-frame';
+			frame.src = src;
+
+			div.appendChild(frame);
+			document.body.appendChild(div);
+		}
+
+		function init_game(s) { setTimeout(() => document.getElementById('deck-frame').contentWindow.init(s), 100); }
+	</script>
+	<div id='admin panel' class='panel' style='padding: 32px'>
+		<div>
+			<h1>Admin Panel</h1>
+		</div>
+		<hr/>
+		<div>
+			<label>Cutom JSON</label>
+			<textarea id='json_in' rows="4"></textarea>
+			<button type="button" onclick="
+				add_game('app.html');
+				init_game(document.getElementById('json_in').value);
+			">Submit</button>
+		</div>
+		<hr/>
+		<div>
+			<label>JSON URL</label>
+			<input type='text' id='json_url'></input>
+			<button type="button" onclick="
+				add_game('app.html?src=' + document.getElementById('json_url').value);
+			">Submit</button>
+		</div>
+		<hr/>
+		<div>
+			<label>Preloaded JSON</label>
+			<select id='json_asset'>
+				<option value='assets/dib.json'>Dismantling Implicit Biases</option>
+			</select>
+			<button type="button" onclick="
+				add_game('app.html?src=' + document.getElementById('json_asset').value);
+			">Submit</button>
+		</div>
+	</div>
+</body>
+</html>

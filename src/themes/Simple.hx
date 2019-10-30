@@ -17,11 +17,18 @@ using Math;
 class Simple implements Theme
 {
 
+	public var fonts = [];
 	public var padding:Float = 48;
 	public var margin:Float = 24;
 	public var legacy:Bool = true;
 
 	public function new() {}
+
+	public function load_title() {
+	}
+
+	public function load_end() {
+	}
 
 	public function load_image(src:String, display:String):Container {
 		var out = Sprite.fromImage(src);

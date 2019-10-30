@@ -8,6 +8,7 @@ import util.ResizeUtil;
 import pixi.core.display.DisplayObject;
 import util.CardManager;
 import pixi.core.display.Container;
+import objects.EndScreen;
 using Math;
 
 class ContentContainer extends Container
@@ -39,10 +40,14 @@ class ContentContainer extends Container
 	}
 
 	public function load_card(title:String) {
+		//trace('Loading card: ${title}');
 		padding = App.theme.padding * 3;
-		trace('Loading card: ${title}');
 		if (loaded) return unload_card(title);
 		y = 0;
+		if (title == 'app____end') {
+			App.i.stage.addChild(new EndScreen());
+			return;
+		}
 		var card = CardManager.get_card(title);
 		var last_y = App.theme.padding;
 		for (item in card.content) {
@@ -51,7 +56,7 @@ class ContentContainer extends Container
 				case 'image': App.theme.load_image(item.src, item.display);
 				case 'paragraph': App.theme.load_paragraph(item.text);
 				case 'textbox': App.theme.load_textbox(item.text);
-				case 'button': App.theme.load_button(item.text, item.url);
+				case 'button': App.theme.load_button(item.text, (item.end != null && item.end ? 'app____end' : item.url));
 				case 'article': App.theme.load_article(item.text, item.src, item.url);
 				case 'flag': 
 					util.FlagManager.set(item.text, (item.value != null ? item.value : true));
@@ -74,7 +79,7 @@ class ContentContainer extends Container
 	}
 
 	public function unload_card(next:String) {
-		trace('unloading ${content_array.length} objects');
+		//trace('unloading ${content_array.length} objects');
 		Timer.get(App.theme.unload(content_array), () -> {
 			while (content_array.length > 0) destroy_object(content_array.shift());
 			loaded = false;
