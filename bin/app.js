@@ -50,11 +50,8 @@ App.init = function(config) {
 		if(config.bg_src != null) {
 			images.push(config.bg_src);
 		}
-		console.log("src/App.hx:30:",images);
-		zero_extensions_ArrayExt.remove_duplicates(images);
-		console.log("src/App.hx:32:",images);
 		var loader = new PIXI.loaders.Loader();
-		loader.add(images);
+		loader.add(zero_extensions_ArrayExt.remove_duplicates(images));
 		loader.on("complete",function() {
 			return App.i = new App();
 		});
@@ -761,14 +758,14 @@ themes_Legacy.prototype = {
 	,load_points: function(amt) {
 		var alert = new PIXI.Graphics();
 		alert.beginFill(10742334);
-		alert.drawRoundedRect(-128,-32,256,64,32);
+		alert.drawRoundedRect(-128,-24,256,48,24);
 		alert.endFill();
 		var text = new PIXI.Text("You earned " + amt + " points!",themes_Legacy.a);
 		text.anchor.set(0.5);
 		alert.addChild(text);
 		alert.position.set(App.i.renderer.width / 2,App.i.renderer.height + 40);
 		App.i.stage.addChild(alert);
-		TweenMax.to(alert,0.5,{ y : App.i.renderer.height - 64});
+		TweenMax.to(alert,0.5,{ y : App.i.renderer.height - 48});
 		zero_utilities_Timer.get(2.5,function() {
 			return TweenMax.to(alert,0.5,{ y : App.i.renderer.height + 40, onComplete : function() {
 				alert.destroy();
@@ -1087,17 +1084,16 @@ zero_extensions_ArrayExt.merge = function(a1,a2) {
 	return a1;
 };
 zero_extensions_ArrayExt.remove_duplicates = function(arr) {
-	var processed = [];
+	var unique = [];
 	var _g = 0;
 	while(_g < arr.length) {
-		var o = arr[_g];
+		var item = arr[_g];
 		++_g;
-		if(processed.indexOf(o) >= 0) {
-			HxOverrides.remove(arr,o);
-		} else {
-			processed.push(o);
+		if(unique.indexOf(item) < 0) {
+			unique.push(item);
 		}
 	}
+	arr = unique;
 	return arr;
 };
 var zero_utilities_Timer = function() {

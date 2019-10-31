@@ -28,11 +28,8 @@ class App extends Application {
 		var load_images = () -> {
 			var images = [ for (card in deck) for (item in card.content) if (item.type.toLowerCase() == 'image' || item.type.toLowerCase() == 'article') item.src ];
 			if (config.bg_src != null) images.push(config.bg_src);
-			trace(images);
-			images.remove_duplicates();
-			trace(images);
 			var loader = new Loader();
-			loader.add(images);
+			loader.add(images.remove_duplicates());
 			//loader.on('progress', () -> trace(loader.progress));
 			loader.on('complete', () -> i = new App());
 			loader.load();

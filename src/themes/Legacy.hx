@@ -330,7 +330,7 @@ class Legacy implements util.Theme
 	public function load_points(amt:Int):Container {
 		var alert = new Graphics();
 		alert.beginFill(0xA3EA3E);
-		alert.drawRoundedRect(-128, -32, 256, 64, 32);
+		alert.drawRoundedRect(-128, -24, 256, 48, 24);
 		alert.endFill();
 		var text = new Text('You earned $amt points!', a);
 		text.anchor.set(0.5);
@@ -338,7 +338,7 @@ class Legacy implements util.Theme
 		alert.position.set(App.i.renderer.width/2, App.i.renderer.height + 40);
 
 		App.i.stage.addChild(alert);
-		alert.to(0.5, { y: App.i.renderer.height - 64 });
+		alert.to(0.5, { y: App.i.renderer.height - 48 });
 		Timer.get(2.5, () -> alert.to(0.5, { y: App.i.renderer.height + 40, onComplete: () -> alert.destroy() }));
 
 		return new Container();

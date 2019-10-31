@@ -18,14 +18,13 @@
 			"title": "situation",
 			"content": [
 				{
-					"type": "paragraph",
-					"text": "Jackie, who has recently been through training in avoiding ableist language, words or phrases that devalue people who have physical or mental disabilities, notices that Tomas frequently uses phrases such as “That timeline is absolutely insane,” or “We will not let this budget cripple us.”\n\nJackie realizes that Tomas has been brought in as a consultant and she doesn’t want to stir the pot and cause their project to fail because of interpersonal conflict. Yet, as time wears on, she’s finding it more and more difficult to work with him. She’s worried this type of language will trickle down to her team. In fact, she has noticed that Sam, one of her newer team members, seems to idolize Tomas because of his status."
-				},
-				{
 					"type": "image",
 					"display": "full-width",
-					"src": "assets/business.png",
-					"flag": "show-image"
+					"src": "assets/business2.png"
+				},
+				{
+					"type": "paragraph",
+					"text": "Jackie, who has recently been through training in avoiding ableist language, words or phrases that devalue people who have physical or mental disabilities, notices that Tomas frequently uses phrases such as “That timeline is absolutely insane,” or “We will not let this budget cripple us.”\n\nJackie realizes that Tomas has been brought in as a consultant and she doesn’t want to stir the pot and cause their project to fail because of interpersonal conflict. Yet, as time wears on, she’s finding it more and more difficult to work with him. She’s worried this type of language will trickle down to her team. In fact, she has noticed that Sam, one of her newer team members, seems to idolize Tomas because of his status."
 				},
 				{
 					"type": "button",
@@ -66,14 +65,15 @@
 					"text": "Correcting Tomas in front of the team (even kindly) could cause Tomas to react defensively."
 				},
 				{
-					"type": "button",
-					"text": "Try Again",
+					"type": "article",
+					"src": "assets/business3.png",
+					"text": "Learning Our Implicit Biases",
 					"url": "brief"
 				},
 				{
-					"type": "flag",
-					"flag": "show-image",
-					"value": true 
+					"type": "button",
+					"text": "Try Again",
+					"url": "brief"
 				}
 			]
 		},
@@ -83,6 +83,12 @@
 				{
 					"type": "paragraph",
 					"text": "Although this respectfully addresses Tomas’ influence on Jackie’s team, it doesn’t address Tomas’ usage of the ableist language which is causing some inner conflict for Jackie and may inhibit the project’s success down the line and inadvertently hurt other people."
+				},
+				{
+					"type": "article",
+					"src": "assets/business3.png",
+					"text": "Learning Our Implicit Biases",
+					"url": "brief"
 				},
 				{
 					"type": "button",
@@ -128,18 +134,13 @@
 			"url": "http://google.com"
 		},
 		{
-			"image": "assets/business.png",
+			"image": "assets/business2.png",
 			"title": "Test Link Number Two",
 			"url": "http://google.com"
 		},
 		{
-			"image": "assets/business.png",
+			"image": "assets/business3.png",
 			"title": "Test Link Number Three",
-			"url": "http://google.com"
-		},
-		{
-			"image": "assets/business.png",
-			"title": "Test Link Number Four",
 			"url": "http://google.com"
 		}
 	]
