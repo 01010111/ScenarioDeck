@@ -125,7 +125,7 @@
 	"subtitle": "scenario",
 	"description": "Carefully read through the brief and simulation, then give the best answer to the prompt.",
 	"button_text": "Begin",
-	"bg_src": "assets/business.png",
+	"bg_src": "https://trt-assets.s3.amazonaws.com/transform/Images/Client+Photos/AEP+poor+leg+2+-+John+scenario+image+(2).JPG",
 	"first_card": "brief",
 	"content_links": [
 	{

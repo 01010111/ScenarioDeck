@@ -29,7 +29,7 @@ class App extends Application {
 			var images = [ for (card in deck) for (item in card.content) if (item.type.toLowerCase() == 'image' || item.type.toLowerCase() == 'article') item.src ];
 			if (config.bg_src != null) images.push(config.bg_src);
 			var loader = new Loader();
-			loader.add(images.remove_duplicates());
+			for (image in images.remove_duplicates()) loader.add({ url:image, crossOrigin: '' });
 			//loader.on('progress', () -> trace(loader.progress));
 			loader.on('complete', () -> i = new App());
 			loader.load();
@@ -67,6 +67,7 @@ class App extends Application {
 			powerPreference: 'high-performance',
 			autoResize: true,
 			legacy: theme.legacy,
+			forceCanvas: theme.legacy,
 		});
 		Browser.window.addEventListener('resize', () -> {
 			renderer.resize(Browser.document.documentElement.clientWidth, Browser.document.documentElement.clientHeight);

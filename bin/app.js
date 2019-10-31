@@ -11,7 +11,7 @@ var App = $hx_exports["App"] = function() {
 	this.last = 0.0;
 	var _gthis = this;
 	App.i = this;
-	PIXI.Application.call(this,{ width : window.document.documentElement.clientWidth, height : window.document.documentElement.clientHeight, backgroundColor : 16777215, antialias : true, roundPixels : true, clearBeforeRender : true, forceFXAA : true, powerPreference : "high-performance", autoResize : true, legacy : App.theme.legacy});
+	PIXI.Application.call(this,{ width : window.document.documentElement.clientWidth, height : window.document.documentElement.clientHeight, backgroundColor : 16777215, antialias : true, roundPixels : true, clearBeforeRender : true, forceFXAA : true, powerPreference : "high-performance", autoResize : true, legacy : App.theme.legacy, forceCanvas : App.theme.legacy});
 	window.addEventListener("resize",function() {
 		_gthis.renderer.resize(window.document.documentElement.clientWidth,window.document.documentElement.clientHeight);
 		util_ResizeUtil.resize();
@@ -51,7 +51,13 @@ App.init = function(config) {
 			images.push(config.bg_src);
 		}
 		var loader = new PIXI.loaders.Loader();
-		loader.add(zero_extensions_ArrayExt.remove_duplicates(images));
+		var _g3 = 0;
+		var _g4 = zero_extensions_ArrayExt.remove_duplicates(images);
+		while(_g3 < _g4.length) {
+			var image = _g4[_g3];
+			++_g3;
+			loader.add({ url : image, crossOrigin : ""});
+		}
 		loader.on("complete",function() {
 			return App.i = new App();
 		});
