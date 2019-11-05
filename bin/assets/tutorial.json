@@ -1,0 +1,233 @@
+{
+	"theme": "legacy",
+	"title": "Scenario Deck Documentation",
+	"subtitle": "tutorial",
+	"description": "This Scenario Deck will provide you with all the documentation needed to create your own Scenario Deck!",
+	"button_text": "Begin",
+	"bg_src": "assets/business.png",
+	"first_card": "contents",
+	"content_links": [],
+	"deck":[
+		{
+			"title": "contents",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "Click on a button below to learn about different content elements."
+				},
+				{
+					"type": "button",
+					"text": "paragraph",
+					"url": "paragraph"
+				},
+				{
+					"type": "button",
+					"text": "image",
+					"url": "image"
+				},
+				{
+					"type": "button",
+					"text": "button",
+					"url": "button"
+				},
+				{
+					"type": "button",
+					"text": "textbox",
+					"url": "textbox"
+				},
+				{
+					"type": "button",
+					"text": "article",
+					"url": "article"
+				},
+				{
+					"type": "button",
+					"text": "flag",
+					"url": "flag"
+				},
+				{
+					"type": "button",
+					"text": "points",
+					"url": "points"
+				}
+			]
+		},
+		{
+			"title": "paragraph",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "This is an example of a paragraph element. To create a paragraph object, include the following:"
+				},
+				{
+					"type": "textbox",
+					"text": "type: 'paragraph'\ntext: '[your desired text]'"
+				},
+				{
+					"type": "button",
+					"text": "Go Back",
+					"url": "contents"
+				}
+			]
+		},
+		{
+			"title": "image",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "The below is an example of an image with the 'display' set to 'full-width'"
+				},
+				{
+					"type": "image",
+					"display": "full-width",
+					"src": "assets/image.png"
+				},
+				{
+					"type": "paragraph",
+					"text": "To create an image object, include the following:"
+				},
+				{
+					"type": "textbox",
+					"text": "type: 'image'\ndisplay: '[full-width | padded]'\nsrc: '[The URL of your image]'"
+				},
+				{
+					"type": "button",
+					"text": "Go Back",
+					"url": "contents"
+				}
+			]
+		},
+		{
+			"title": "button",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "The below is an example of a button, it will link you back to this page."
+				},
+				{
+					"type": "button",
+					"text": "Click Me!",
+					"url": "button"
+				},
+				{
+					"type":"paragraph",
+					"text":"To create a button object, include the following:"
+				},
+				{
+					"type": "textbox",
+					"text": "type: 'button'\ntext: '[Display Text]'\nurl: '[Destination URL]'"
+				},
+				{
+					"type": "button",
+					"text": "Go Back",
+					"url": "contents"
+				}
+			]
+		},
+		{
+			"title": "textbox",
+			"content": [
+				{
+					"type":"paragraph",
+					"text":"The below is an example of a textbox:"
+				},
+				{
+					"type":"textbox",
+					"text":"I'm a textbox. You can use me for emphasis!"
+				},
+				{
+					"type": "paragraph",
+					"text": "To create a textbox object, include the following:"
+				},
+				{
+					"type":"textbox",
+					"text":"type: 'textbox'\ntext: '[your desired text]'"
+				},
+				{
+					"type": "button",
+					"text": "Go Back",
+					"url": "contents"
+				}
+			]
+		},
+		{
+			"title": "article",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "The below is an example of an article, it will link you back to this page:"
+				},
+				{
+					"type": "article",
+					"url": "article",
+					"text": "Articles have caption text",
+					"src": "assets/image.png"
+				},
+				{
+					"type": "paragraph",
+					"text": "To create an article object, include the following:"
+				},
+				{
+					"type": "textbox",
+					"text": "type: 'article'\nurl: '[Destination URL]'\ntext: '[desired caption text]'\nsrc: '[The URL of your image]'"
+				},
+				{
+					"type": "button",
+					"text": "Go Back",
+					"url": "contents"
+				}
+			]
+		},
+		{
+			"title": "flag",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "Flags are objects that set a boolean value to true or false. Click the button to refresh this menu."
+				},
+				{
+					"type": "button",
+					"text": "Reload",
+					"url": "flag"
+				},
+				{
+					"type": "paragraph",
+					"text": "This page sets the flag 'visited-flag' to true, and the back button checks to see if that flag is true to display.",
+					"flag":"visited flag"
+				},
+				{
+					"type": "button",
+					"text": "Go Back",
+					"url": "contents",
+					"flag": "visited flag"
+				},
+				{
+					"type": "flag",
+					"text":"visited flag"
+				}
+			]
+		},
+		{
+			"title": "points",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "Points are a way to reward users for interacting with content. Visiting this page will award you with 10 points. Good job!\n\nTo create a points object, include the following:"
+				},
+				{
+					"type":"textbox",
+					"text": "type: 'points'\namt: [number of points you'd like to award]"
+				},
+				{
+					"type": "points",
+					"amt": 10
+				},
+				{
+					"type": "button",
+					"text": "Go Back",
+					"url": "contents"
+				}
+			]
+		}
+	]
+}
