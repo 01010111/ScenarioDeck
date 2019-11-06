@@ -101,7 +101,18 @@ typedef Config = {
 	description:String,
 	button_text:String,
 	first_card:String,
+	board:BoardData,
 	?subtitle:String,
 	?bg_src:String,
-	?content_links:Array<ContentData>
+	?content_links:Array<ContentData>,
+}
+
+typedef BoardData = {
+	id: String,
+	image: { url:String },
+	assets: Array<{
+		id: String,
+		title: String,
+		image: { url:String },
+	}>,
 }

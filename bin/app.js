@@ -367,7 +367,7 @@ var objects_EndScreen = function() {
 	e_text.position.set(71,24);
 	this.exit.addChild(e_text);
 	this.continue_text = new PIXI.Text("Recommended for you:",{ fontFamily : "Avenir Next Demi", fontSize : 24, align : "left", fill : 16777215});
-	this.content_lane = new objects_ContentLane(App.config.content_links != null ? App.config.content_links : []);
+	this.content_lane = new objects_ContentLane(App.config.content_links != null ? App.config.content_links : objects_EndScreen.get_articles(App.config.board));
 	var resize = function() {
 		if(App.i.renderer.width >= 480 && App.i.renderer.height >= 600) {
 			_gthis.title.style.wordWrapWidth = App.i.renderer.width - 64;
@@ -410,6 +410,20 @@ var objects_EndScreen = function() {
 		child.alpha = 0;
 		TweenMax.to(child,0.2,{ alpha : 1, delay : i++ * 0.2});
 	}
+};
+objects_EndScreen.get_articles = function(board) {
+	if(board == null || board.assets == null) {
+		return [];
+	}
+	var _g = [];
+	var _g1 = 0;
+	var _g2 = board.assets;
+	while(_g1 < _g2.length) {
+		var asset = _g2[_g1];
+		++_g1;
+		_g.push({ title : asset.title, image : asset.image.url, url : "https://www3.blueoceanbrain.com/board/" + board.id + "/article/" + asset.id});
+	}
+	return _g;
 };
 objects_EndScreen.__super__ = PIXI.Container;
 objects_EndScreen.prototype = $extend(PIXI.Container.prototype,{

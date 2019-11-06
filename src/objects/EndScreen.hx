@@ -1,5 +1,6 @@
 package objects;
 
+import App.BoardData;
 import zero.utilities.Timer;
 import pixi.core.math.shapes.Rectangle;
 import pixi.core.sprites.Sprite;
@@ -101,7 +102,7 @@ class EndScreen extends Container
 			fill: 0xFFFFFF
 		});
 
-		content_lane = new ContentLane(App.config.content_links != null ? App.config.content_links : []);
+		content_lane = new ContentLane(App.config.content_links != null ? App.config.content_links : get_articles(App.config.board));
 
 		var resize = () -> {
 			if (App.i.renderer.width >= 480 && App.i.renderer.height >= 600) { // Desktop
@@ -143,6 +144,15 @@ class EndScreen extends Container
 			child.alpha = 0;
 			child.to(0.2, { alpha: 1, delay: i++ * 0.2 });
 		}
+	}
+
+	static function get_articles(board:BoardData):Array<ContentData> {
+		if (board == null || board.assets == null) return [];
+		return [ for (asset in board.assets) {
+			title: asset.title,
+			image: asset.image.url,
+			url: 'https://www3.blueoceanbrain.com/board/${board.id}/article/${asset.id}'
+		}];
 	}
 
 }
