@@ -1,5 +1,6 @@
 package;
 
+import util.CardManager;
 import zero.utilities.Timer;
 import js.Browser;
 import pixi.loaders.Loader;
@@ -24,6 +25,7 @@ class App extends Application {
 		App.deck = config.deck;
 		App.theme = get_theme(config.theme);
 		App.config = config;
+		CardManager.validate();
 
 		var load_images = () -> {
 			var images = [ for (card in deck) for (item in card.content) if (item.type.toLowerCase() == 'image' || item.type.toLowerCase() == 'article') item.src ];
