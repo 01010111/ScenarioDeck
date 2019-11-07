@@ -20,11 +20,22 @@ class App extends Application {
 	public static var config:Config;
 
 	static function main() {}
+
+	public static function restart() {
+		App.i.destroy(true);
+		init(config, false);
+	}
 	
-	static function init(config:Config) {
+	static function init(config:Config, load:Bool = true) {
 		App.deck = config.deck;
 		App.theme = get_theme(config.theme);
 		App.config = config;
+
+		if (!load) {
+			i = new App();
+			return;
+		}
+
 		CardManager.validate();
 
 		var load_images = () -> {

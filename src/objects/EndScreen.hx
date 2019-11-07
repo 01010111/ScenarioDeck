@@ -64,7 +64,7 @@ class EndScreen extends Container
 		replay.buttonMode = true;
 		replay.on('pointertap', () -> {
 			// Reload game TODO: does this work ok?
-			js.Browser.location.reload();
+			App.restart();
 		});
 
 		var r_text = new Text('Replay', {

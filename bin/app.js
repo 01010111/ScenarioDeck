@@ -27,10 +27,21 @@ var App = $hx_exports["App"] = function() {
 App.__name__ = true;
 App.main = function() {
 };
-App.init = function(config) {
+App.restart = function() {
+	App.i.destroy(true);
+	App.init(App.config,false);
+};
+App.init = function(config,load) {
+	if(load == null) {
+		load = true;
+	}
 	App.deck = config.deck;
 	App.theme = App.get_theme(config.theme);
 	App.config = config;
+	if(!load) {
+		App.i = new App();
+		return;
+	}
 	util_CardManager.validate();
 	var load_images = function() {
 		var _g = [];
@@ -438,7 +449,7 @@ var objects_EndScreen = function() {
 	this.replay.interactive = true;
 	this.replay.buttonMode = true;
 	this.replay.on("pointertap",function() {
-		window.location.reload();
+		App.restart();
 		return;
 	});
 	var r_text = new PIXI.Text("Replay",{ fontFamily : "Avenir Next Demi", fontSize : 18, fill : 0});
