@@ -632,7 +632,7 @@ objects_ContentLane.prototype = $extend(PIXI.Container.prototype,{
 	,content_action: function(content) {
 		this.user_initiated_scroll = true;
 		if(content.buttonMode) {
-			window.document.location.href = content.data.url;
+			window.top.location.href = content.data.url;
 		} else {
 			this.focus_on_content(content);
 		}
@@ -1249,13 +1249,14 @@ util_FlagManager.get = function(flag) {
 var util_LinkManager = function() { };
 util_LinkManager.__name__ = true;
 util_LinkManager.go_to_link = function(url) {
+	console.log("src/util/LinkManager.hx:11:",url);
 	if(Math.abs(App.i.content_container.total_move) > util_LinkManager.move_threshold) {
 		return;
 	}
 	if(util_CardManager.exists(url) || url == "app____end") {
 		App.i.content_container.load_card(url);
 	} else {
-		window.location.href = url;
+		window.top.location.href = url;
 	}
 };
 var util_PointsManager = function() { };

@@ -253,7 +253,7 @@ class ContentLane extends Container {
 	function content_action(content:ContentLink)
 	{
 		user_initiated_scroll = true;
-		content.buttonMode ? js.Browser.document.location.href = content.data.url : focus_on_content(content);
+		content.buttonMode ? js.Browser.window.top.location.href = content.data.url : focus_on_content(content);
 	}
 
 }
