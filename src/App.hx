@@ -66,6 +66,7 @@ class App extends Application {
 	}
 
 	public var content_container:ContentContainer;
+	public static var animation_requested:Bool = false;
 
 	public function new() {
 		i = this;
@@ -87,7 +88,10 @@ class App extends Application {
 			util.ResizeUtil.resize();
 		});
 		Browser.document.body.appendChild(view);
-		Browser.window.requestAnimationFrame(update);
+		if (!animation_requested) {
+			animation_requested = true;
+			Browser.window.requestAnimationFrame(update);
+		}
 		content_container = new ContentContainer();
 		stage.addChild(content_container);
 		App.theme.load_title();

@@ -19,7 +19,10 @@ var App = $hx_exports["App"] = function() {
 		return;
 	});
 	window.document.body.appendChild(this.view);
-	window.requestAnimationFrame($bind(this,this.update));
+	if(!App.animation_requested) {
+		App.animation_requested = true;
+		window.requestAnimationFrame($bind(this,this.update));
+	}
 	this.content_container = new objects_ContentContainer();
 	this.stage.addChild(this.content_container);
 	App.theme.load_title();
@@ -1398,6 +1401,7 @@ Object.defineProperty(js__$Boot_HaxeError.prototype,"message",{ get : function()
 	return String(this.val);
 }});
 js_Boot.__toStr = ({ }).toString;
+App.animation_requested = false;
 themes_Legacy.title_h = new PIXI.TextStyle({ fontFamily : "Avenir Next Demi", align : "center", fill : 16777215, fontSize : 24, wordWrap : true});
 themes_Legacy.title_sub = new PIXI.TextStyle({ fontFamily : "Avenir Next Bold", fontSize : 12, fill : 16777215, align : "center", letterSpacing : 4});
 themes_Legacy.title_p = new PIXI.TextStyle({ fontFamily : "Avenir Next Medium", align : "left", fill : 16777215, fontSize : 15, lineHeight : 24, wordWrap : true});
